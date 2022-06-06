@@ -15,3 +15,4 @@
     {{/foreach}}
 
 </div>
+{include file="template/footer.tpl"}

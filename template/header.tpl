@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <base href="{BASE_URL}">
+    <base href="{BASE_URL}/home">
     <meta charset="UTF-8">
     <meta name="viewport" main-content="width=device-width, initial-scale=1.0">
     <title>FUBOL</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/login.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 
@@ -45,9 +45,8 @@
 
 <div class="py-3 mb-4 border-bottom">
     <div class="container d-flex flex-wrap justify-content-center">
-      <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4">FULBO</span>
+      <a href="home" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+        <h4>FULBO</h4>
       </a>
     </div>
 </div>

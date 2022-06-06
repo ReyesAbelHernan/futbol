@@ -16,8 +16,9 @@
         <label>Email</label>
         <input type="text" placeholder="Your Email" name="email">
         
-        <input type="submit">
+        <input type="submit" value="Sign up">
     </form>
     {$mensaje}
 </div>
 
+{include file="template/footer.tpl"}
