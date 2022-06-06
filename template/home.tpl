@@ -4,7 +4,7 @@
         <div class="container">
             <div class="filtrando">
                 <form action="filtrar" method="POST">
-                    <label>Teams</label>
+                    <label>Teams:</label>
                     <select name="inputFiltrar">
                             {foreach from=$team item=category}
                                 <option value={$category->id}>{$category->team}</option>
