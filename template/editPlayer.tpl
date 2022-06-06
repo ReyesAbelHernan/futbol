@@ -20,3 +20,4 @@
     </form>
         <button type="submit">Send</button>
 </div>
+{include file="template/footer.tpl"}

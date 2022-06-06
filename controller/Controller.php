@@ -49,7 +49,7 @@ class Controller
             AuthHelper::checkLoggedIn();
             $name = $_POST['name'];
             $this->model->newTeam($name);
-            header("Location:" . BASE_URL . 'newTeam');
+            header("Location:" . BASE_URL . 'home');
         }
 
 
@@ -66,7 +66,7 @@ class Controller
         {
             AuthHelper::checkLoggedIn();
             $this->model->deleteTeam($id);
-            header("Location:" . BASE_URL . 'newTeam');
+            header("Location:" . BASE_URL . 'home');
         }
 
 

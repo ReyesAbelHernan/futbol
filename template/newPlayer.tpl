@@ -23,3 +23,4 @@
     </form>
 </div>    
 {/if}
+{include file="template/footer.tpl"}
