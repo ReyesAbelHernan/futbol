@@ -1,9 +1,8 @@
 {include file="template/header.tpl"}
 
-<div class="registro">
-    <h2 id="title">Create Acount</h2>
-
+<div class="signUp">
     <form action="registrar" method="POST">
+        <h3>Create Acount</h3>
         <label>Username</label>
         <input type="text" placeholder="Enter Username" name="username">
         
@@ -17,8 +16,9 @@
         <input type="text" placeholder="Your Email" name="email">
         
         <input type="submit" value="Sign up">
+        <label>{$mensaje}</label>
     </form>
-    {$mensaje}
+   
 </div>
 
 {include file="template/footer.tpl"}

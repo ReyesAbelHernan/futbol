@@ -13,10 +13,12 @@
         <input type="password" placeholder="Enter Password" name='password'>
 
         <input type="submit" value="Enter">
+        <a href="register">You dont acount?</a>
+        <label>{$mensaje}</label>
     </form>
-    <a href="register">You dont acount?</a>
+
 </div>
-<a>{$mensaje}</a>
+
 {include file="template/footer.tpl"}
    
   

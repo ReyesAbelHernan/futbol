@@ -3,12 +3,12 @@
 {if isset($username) && $username}
 <div class="newPlayer">
     <form action="newPlayer" method="POST">
-        <label>Player</label>
+        <h3>New Player</h3>
         <label>Name</label>
         <input type="text" name="name" class="name">
         <label>Sub Name</label>
         <textarea type="text" name="subname"></textarea>
-        <label>number</label>
+        <label>Number</label>
         <textarea type="text" name="number"></textarea>
         <label>Nationality</label>
         <textarea type="text" name="nationality"></textarea>
@@ -19,8 +19,10 @@
             {/foreach}
         </select>
         <br>
-        <button type="submit">Send</button>
+          <input type="submit" value="Send">
     </form>
-</div>    
+</div>   
 {/if}
-{include file="template/footer.tpl"}
+
+{include file="template/footer.tpl"} 
+
