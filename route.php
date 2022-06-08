@@ -64,6 +64,11 @@ switch ($urlParts[0]) {
 		$Controller->upPlayer($urlParts[1]);
 		$Controller->showPlayer();
 		break;
+	case 'updateTeam':
+		$Controller->upTeam($urlParts[1]);
+		$Controller->showPlayer();
+		$Controller->showTeam();
+		break;
 	case 'filtrar':
 		$Controller->filtrar();
 		break;

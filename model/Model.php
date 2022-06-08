@@ -6,13 +6,22 @@ class Model extends DBModel
 {
 
   
-    //* crea un array de player*//
+    //* crea un arreglo con un id*//
     function getPlayer($id)
     {
         $query = $this->getDb()->prepare('SELECT * FROM player WHERE id = ?');
         $query->execute(array(($id)));
         return $query->fetch(PDO::FETCH_OBJ);
     }
+
+    function getTeamId($id)
+    {
+        $query = $this->getDb()->prepare('SELECT * FROM team WHERE id = ?');
+        $query->execute(array(($id)));
+        return $query->fetch(PDO::FETCH_OBJ);
+    }
+
+
 
 
     //** funciones que crean una celda en las tablas */
@@ -49,7 +58,7 @@ class Model extends DBModel
     }
 
 
-    //**  */
+    //** crea un array de player y team */
     function getAllPlayer()
     {
         $query = $this->getDb()->prepare('SELECT * FROM player');
@@ -76,12 +85,16 @@ class Model extends DBModel
     }
 
     //** funcion que modifica una celda de la base de datos  */
-    public function updatePlayer($id,$subname,$name,$number,$nationality,$team)
+    public function updatePlayer($id,$name,$subname,$number,$nationality,$id_team)
     {
-        $sentencia = $this->getDb()->prepare('UPDATE player SET = subname = ?, name = ? , number = ? , nationality = ? id_team = ? WHERE id=?');
-        $sentencia->execute(array($id,$subname,$name,$number,$nationality,$team));
+        $query = $this->getDb()->prepare('UPDATE player SET name = ? , subname = ?, number = ? , nationality = ? , id_team = ? WHERE id=?');
+        $query ->execute(array($name,$subname,$number,$nationality,$id_team,$id));
     }
 
-
+    public function updateTeam($id,$team)
+    {
+        $querys = $this->getDb()->prepare('UPDATE team SET team = ? WHERE id=?');
+        $querys->execute(array($team,$id));
+    }
 
 }

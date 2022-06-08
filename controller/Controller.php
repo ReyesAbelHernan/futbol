@@ -99,16 +99,29 @@ class Controller
         function updatePlayer($id)
         {
             $player=$this->model->getPlayer($id);
-            $team = $this->model->getTeam();
+            $team=$this->model-> getTeam();
             $this->playerView->editPlayer($player,$team);
         }
+        
 
-        function upPlayer($id_team){
+        function upPlayer($id){
             $name = $_POST['name'];
             $subname = $_POST['subname'];
             $number = $_POST['number'];
             $nationality = $_POST['nationality'];
-            $this->model->updatePlayer($name,$subname,$number,$nationality,$id_team);
+            $id_team = $_POST['id_team'];
+            $this->model->updatePlayer($id,$name,$subname,$number,$nationality,$id_team);
+        }
+
+        function updateTeam($id)
+        {
+            $team = $this->model->getTeamId($id);
+            $this->teamView->editTeam($team);
+        }
+
+        function upteam($id){
+            $team = $_POST['team'];
+            $this->model->updateTeam($id,$team);
         }
 
 }

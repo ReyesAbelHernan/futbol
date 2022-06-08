@@ -24,7 +24,7 @@ class TeamView extends View
         $this->getSmarty()->display('template/newTeam.tpl');
     }
 
-    public function EditTeam($team){
+    public function editTeam($team){
         $this->getSmarty()->assign('team', $team);
         $this->getSmarty()->display('template/editTeam.tpl');
     }

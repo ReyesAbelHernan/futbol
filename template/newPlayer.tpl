@@ -5,7 +5,7 @@
     <form action="newPlayer" method="POST">
         <h3>New Player</h3>
         <label>Name</label>
-        <input type="text" name="name" class="name">
+        <input type="text" name="name">
         <label>Sub Name</label>
         <textarea type="text" name="subname"></textarea>
         <label>Number</label>
@@ -15,11 +15,11 @@
         <label>Team</label>
         <select name="id_team">
             {foreach from=$team item=teams}
-                <option value={$teams->id}>{$teams->team}</option>
+                <option name="id_team" value={$teams->id}>{$teams->team} </option>
             {/foreach}
         </select>
         <br>
-          <input type="submit" value="Send">
+          <input type="submit" value="Send" href="home">
     </form>
 </div>   
 {/if}

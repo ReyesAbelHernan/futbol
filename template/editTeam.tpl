@@ -1,18 +1,12 @@
 {include file="template/header.tpl"}
-
-{if isset($username) && $username}
-<div class="newTeam">
-    <form action="newTeam" method="POST">
-        <label>New Team</label>
-        <input type="text" name="team">
-        <button type="submit">Send</button>
-    </form>
+    {if isset($username) && $username}  
+        <div class="newTeam">
+                <form action="updateTeam/{$team->id}" method="POST">
+                    <h3>Edit Team<h3>
+                    <label for="team">{$team->team}</label>
+                    <input type="text" name="team" placeholder="{$team->team}">
+                    <input type="submit" value="Enter">
+                </form>
+        </div>
     {/if}
-
-    {foreach from=team item=team}
-    <form>{$team->team}</form>
-    <a href="deleteTeam/{$category->id}"> Delete </a>
-    {{/foreach}}
-
-</div>
 {include file="template/footer.tpl"}
