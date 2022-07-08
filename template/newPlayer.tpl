@@ -2,7 +2,7 @@
 
 {if isset($username) && $username}
 <div class="newPlayer">
-    <form action="newPlayer" method="POST">
+    <form action="newPlayer" method="POST" enctype="multipart/form-data">
         <h3>New Player</h3>
         <label>Name</label>
         <input type="text" name="name">
@@ -18,6 +18,8 @@
                 <option name="id_team" value={$teams->id}>{$teams->team} </option>
             {/foreach}
         </select>
+        <label>Photo</label>
+        <input type="file" name="photo" id="photo">
         <br>
           <input type="submit" value="Send" href="home">
     </form>

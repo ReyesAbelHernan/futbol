@@ -36,4 +36,13 @@
             $this->getSmarty()->assign('team', $getTeam);
             $this->getSmarty()->display('template/home.tpl');
         }
+
+        function renderComments($player,$team)
+        {
+            $this->getSmarty()->assign('player', $player);
+            $this->getSmarty()->assign('team',$team);
+            $this->getSmarty()->display("template/commentsPlayer.tpl");
+
+        }
+
     }

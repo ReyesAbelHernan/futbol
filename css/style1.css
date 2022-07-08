@@ -199,7 +199,6 @@ background-color: #929ba2;
     font-size: 22px;
     box-shadow: 0 0 20px 0 rgba(71, 71, 71, 0.295);
     width: 500px;
-    height: 850px;
     padding: 50px;
 }
 
@@ -540,3 +539,25 @@ background-color: #929ba2;
 .editPlayer label {
         color: #c0c0c0; 
 }
+
+input[type="radio"] {
+    display: none;
+  }
+  .tier {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+  
+  .tier label:hover{
+    color: orange;
+  }
+  
+  .tier label:hover ~ label {
+    color: orange;
+  }
+
+
+
+  input[type="radio"]:checked ~ label {
+    color: orange;
+  }

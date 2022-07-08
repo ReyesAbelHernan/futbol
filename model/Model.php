@@ -23,14 +23,22 @@ class Model extends DBModel
 
 
 
-
     //** funciones que crean una celda en las tablas */
 
-    function newPlayer($name,$subname,$number,$id_team,$nationality)
+    function newPlayer($name,$subname,$number,$id_team,$nationality,$photo=NULL)
     {
-        $query = $this->getDb()->prepare('INSERT INTO `player`(`name`, `subname`, `number`, `id_team`,`nationality`)VALUES (?,?,?,?,?)');
-        $query->execute([$name,$subname,$number,$id_team,$nationality]);
+        $filepath = null;
+
+        if ($photo)
+        $filepath= $this->uploadPhoto($photo);
+
+        $query = $this->getDb()->prepare('INSERT INTO `player`(`name`, `subname`, `number`, `id_team`,`nationality`,photo)VALUES (?,?,?,?,?,?)');
+        $query->execute([$name,$subname,$number,$id_team,$nationality,$filepath]);
         return $query->fetch(PDO::FETCH_OBJ);
+   
+
+
+
     }
     
     function newTeam($team)
@@ -97,4 +105,47 @@ class Model extends DBModel
         $querys->execute(array($team,$id));
     }
 
+
+
+    function uploadPhoto($photo){
+
+        $filepath = 'imagenes/' . uniqid() . '.jpg';
+        
+        return $filepath;
+
+    }
+
+
+
+    
+    function newPlayerWhitImg($name,$subname,$number,$id_team,$nationality,$nameArchivo,$extensionArchivo,$temporario){
+
+        $nuevoNombre=md5(time().$nameArchivo).'.'.$extensionArchivo;
+
+        $filepath = 'imagenes/';
+
+        $destino = $filepath.$nuevoNombre;
+
+        move_uploaded_file($temporario,$destino);
+        
+        $query = $this->getDb()->prepare('INSERT INTO `player`(`name`, `subname`, `number`, `id_team`,`nationality`,photo)VALUES (?,?,?,?,?,?)');
+        $query->execute([$name,$subname,$number,$id_team,$nationality,$destino]);
+        return $query->fetch(PDO::FETCH_OBJ);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+

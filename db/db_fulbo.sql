@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2022 a las 08:43:31
+-- Tiempo de generación: 08-07-2022 a las 03:24:05
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -33,18 +33,20 @@ CREATE TABLE `player` (
   `subname` varchar(15) NOT NULL,
   `number` int(99) NOT NULL,
   `id_team` int(99) NOT NULL,
-  `nationality` varchar(20) NOT NULL
+  `nationality` varchar(20) NOT NULL,
+  `photo` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `player`
 --
 
-INSERT INTO `player` (`id`, `name`, `subname`, `number`, `id_team`, `nationality`) VALUES
-(1, 'Abel Hernan', 'Reyes', 8, 1, 'Argentina'),
-(2, 'Kevin', 'Garces', 5, 1, 'Argentina'),
-(4, 'Lisandro', 'Iguacel', 7, 1, 'Argentina'),
-(6, 'asdasdff', 'asdaffff', 11, 2, 'arg');
+INSERT INTO `player` (`id`, `name`, `subname`, `number`, `id_team`, `nationality`, `photo`) VALUES
+(1, 'Abel Hernan', 'Reyes', 11, 12, 'Argentina', ''),
+(2, 'Kevin', 'Garces', 5, 1, 'Argentina', ''),
+(4, 'Lisandro', 'Iguacel', 7, 1, 'Argentina', ''),
+(7, 'Maria Teresa', 'Bustos', 15, 2, 'Argentina', ''),
+(16, 'asdfff', 'asdff', 0, 1, 'asdff', 'imagenes/d103729f1dcc30115a21bb963371859e.jpg');
 
 -- --------------------------------------------------------
 
@@ -64,7 +66,7 @@ CREATE TABLE `team` (
 INSERT INTO `team` (`id`, `team`) VALUES
 (1, 'River'),
 (2, 'Boca'),
-(7, 'asddasd');
+(12, 'Envolventess');
 
 -- --------------------------------------------------------
 
@@ -76,16 +78,20 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(15) NOT NULL,
   `password` varchar(20) NOT NULL,
-  `email` varchar(35) NOT NULL
+  `email` varchar(35) NOT NULL,
+  `admin` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES
-(1, 'admin', 'admin', 'admin@outlook.com'),
-(2, 'Shifsters', '$2y$10$8hr1Q41YH8bTX', 'Shifsters@outlook.com');
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `admin`) VALUES
+(1, 'admin', 'admin', 'admin@outlook.com', 1),
+(4, 'abel', '$2y$10$GCkNIfu2VxeNA', 'abel@abel.com', 1),
+(12, 'juan', '$2y$10$csvs4ck2jfnfH', 'juan@a.com', 0),
+(14, 'pepe', '$2y$10$6XZ7.RywtLjxJ', 'pepe@a.a', 0),
+(15, 'jorge', '$2y$10$5T03SqMwwNxzk', 'jorge@a.a', 0);
 
 --
 -- Índices para tablas volcadas
@@ -118,19 +124,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `player`
 --
 ALTER TABLE `player`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `team`
 --
 ALTER TABLE `team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas

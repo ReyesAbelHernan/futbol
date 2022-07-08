@@ -39,7 +39,21 @@ class Controller
             $number = $_POST['number'];
             $id_team = $_POST['id_team'];
             $nationality = $_POST['nationality'];
+            if(isset($_FILES['photo']) ){
+
+                $nameArchivo= $_FILES['photo']['name'];
+    
+                $temporario=$_FILES['photo']['tmp_name'];
+                
+                
+                $extensionArchivo = pathinfo($nameArchivo, PATHINFO_EXTENSION);   
+
+                $this->model->newPlayerWhitImg($name,$subname,$number,$id_team,$nationality,$nameArchivo,$extensionArchivo,$temporario);
+    
+            }
+            
             $this->model->newPlayer($name,$subname,$number,$id_team,$nationality);
+       
             header("Location:" . BASE_URL . 'home');
         }
 
@@ -123,6 +137,15 @@ class Controller
             $team = $_POST['team'];
             $this->model->updateTeam($id,$team);
         }
+
+        function getCommentsPlayers($id)
+    {
+
+        $player = $this->model->getPlayer($id);
+        $team = $this->model->getTeam();
+        $this->playerView->renderComments($player, $team);
+    }
+
 
 }
 

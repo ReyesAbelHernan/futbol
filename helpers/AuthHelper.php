@@ -13,6 +13,7 @@ Class AuthHelper
         $_SESSION['IS_LOGGED'] = true;
         $_SESSION['ID_USER'] = $user->id;
         $_SESSION['USERNAME'] = $user->username;
+        $_SESSION['admin'] = $user->admin;
     }
 
     public static function logout() {

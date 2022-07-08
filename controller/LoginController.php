@@ -14,15 +14,28 @@ class LoginController
         $this->view = new LoginView();
     }
 
+    private function CheckLoggedInn(){
+        
+        if(!isset($_SESSION["admin"])){
+            $logged = "false";
+        } elseif ($_SESSION["admin"] == 1){
+            $logged = "admin";
+        } else {
+            $logged = "user";
+        }
+        return $logged;
+    }
+
+
     public function verifyUser()
     {
         if (!empty($_POST['username']) && !empty($_POST['password'])) {
             $username = $_POST['username'];
             $password = $_POST['password'];
-            $userChecking = $this->model->obtenerUserByUsername($username);
+            $userChecking = $this->model->getUserByUsername($username);
             if (!empty($userChecking)) {
                 AuthHelper::login($userChecking);
-                header("Location:" . BASE_URL . 'home');
+                header("Location:" . BASE_URL . '/home');
             } else {
                 $this->view->renderLogin("Password or User fail");
                 die();
@@ -40,7 +53,7 @@ class LoginController
     function logout()
     {
         AuthHelper::logout();
-        header("Location:" . BASE_URL . 'home');
+        header("Location:" . BASE_URL . '/home');
     }
 
     function renderRegister()
@@ -67,6 +80,58 @@ class LoginController
             die();
         }
         $this->model->addNewUser($user, $pass, $email);
-        $this->view->renderLogin("User successfully registered");
+    
+
+        if (!empty($_POST['username']) && !empty($_POST['password'] && !empty($_POST['email']))) {
+            
+            $userDb = $this->model->getUserByUsername($user);
+            if (!empty($userDb)) {
+                AuthHelper::login($userDb);
+                header('Location: ' . BASE_URL . "/home");
+            } else
+                $this->view->showLogin("Login incorrect, password o user incorrect");
+
+        } else {
+            $this->view->showLogin("Login incomplete");
+        }
+
     }
+
+    public function listUsers()
+    {
+        $users = $this->model->getUsers();
+        $logged = $this->CheckLoggedInn();
+        $this->view->showlistUsers($users,$logged);
+    }
+
+    function deleteUser($id)
+    {
+        AuthHelper::checkLoggedIn();
+        $this->model->deleteUser($id);
+        $this->view->renderListUsers();
+    }
+
+    function setUserToAdmin($id)
+    {
+
+
+        AuthHelper::checkLoggedIn();
+    
+        $this->model->updateToAdmin($id);
+
+        $this->view->renderListUsers();
+    }
+
+    function setAdminToUser($id)
+    {
+
+
+        AuthHelper::checkLoggedIn();
+
+        $this->model->updateToUser($id);
+
+        $this->view->renderListUsers();
+    }
+
+
 }

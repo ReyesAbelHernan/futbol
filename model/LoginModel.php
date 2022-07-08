@@ -11,7 +11,7 @@ class LoginModel extends DBModel
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function obtenerUserByUsername($username)
+    public function getUserByUsername($username)
     {
         $query = $this->getDb()->prepare('SELECT * FROM user WHERE username = ?');
         $query->execute(array(($username)));
@@ -28,10 +28,36 @@ class LoginModel extends DBModel
         return false;
     }
 
+    public function getUsers()
+    {
+        $query = $this->getDb()->prepare('SELECT * FROM user');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function addNewUser($user, $pass, $email)
     {
         $passEnc = password_hash($pass, PASSWORD_DEFAULT);
         $query = $this->getDb()->prepare('INSERT INTO user (username,password,email) VALUES (?, ?, ?)');
         $query->execute([$user, $passEnc, $email]);
     }
+
+    function deleteUser($id){
+        $sentencia = $this->getDb()->prepare("DELETE FROM user WHERE id=?");
+        $sentencia->execute([$id]);
+        return $sentencia->fetch(PDO::FETCH_OBJ);
+    }
+
+    function updateToUser($id){
+        $sentencia = $this->getDb()->prepare('UPDATE user SET admin=0 WHERE id=?');
+        $sentencia->execute(array($id));
+    }
+
+    function updateToAdmin($id){
+        $sentencia = $this->getDb()->prepare('UPDATE user SET admin=1 WHERE id=?');
+        $sentencia->execute(array($id));
+    }
+
+
+
 }

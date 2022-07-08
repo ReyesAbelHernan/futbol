@@ -1,6 +1,6 @@
 <?php
 
-define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
+define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) );
 
 require_once('controller/Controller.php');
 require_once('controller/LoginController.php');
@@ -59,7 +59,10 @@ switch ($urlParts[0]) {
 		break;
 	case 'editTeam':
 		$Controller->updateTeam($urlParts[1]);
-		break;	
+		break;
+	case 'commentsPlayer':
+		$Controller->getCommentsPlayers($urlParts[1]);
+		break;
 	case 'updatePlayer':
 		$Controller->upPlayer($urlParts[1]);
 		$Controller->showPlayer();
@@ -78,6 +81,18 @@ switch ($urlParts[0]) {
 		break;
 	case 'login':
 		$LoginController->showLogin();
+		break;
+	case 'deleteUser':
+		$LoginController->deleteUser($urlParts[1]);
+		break;
+	case 'admin':
+		$LoginController->setUserToAdmin($urlParts[1]);
+		break;
+	case 'user':
+		$LoginController->setAdminToUser($urlParts[1]);
+		break;
+	case 'listUsers':
+		$LoginController->listUsers();
 		break;
 	default:
 		echo '<h1>Error 404 - Page not found </h1>';
