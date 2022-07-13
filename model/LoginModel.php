@@ -28,12 +28,16 @@ class LoginModel extends DBModel
         return false;
     }
 
+    //** hace una  */
+
     public function getUsers()
     {
         $query = $this->getDb()->prepare('SELECT * FROM user');
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
+
+    //** crea un nuevo usuario en la tabla user */
 
     public function addNewUser($user, $pass, $email)
     {
@@ -42,11 +46,17 @@ class LoginModel extends DBModel
         $query->execute([$user, $passEnc, $email]);
     }
 
+
+    //** esta funcion borra un usuario de la tabla user */
+
     function deleteUser($id){
         $sentencia = $this->getDb()->prepare("DELETE FROM user WHERE id=?");
         $sentencia->execute([$id]);
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
+
+
+    // * Estas funciones dan de alta o baja es estado del usuario de admin a usuaio y viceversa /
 
     function updateToUser($id){
         $sentencia = $this->getDb()->prepare('UPDATE user SET admin=0 WHERE id=?');
@@ -57,7 +67,5 @@ class LoginModel extends DBModel
         $sentencia = $this->getDb()->prepare('UPDATE user SET admin=1 WHERE id=?');
         $sentencia->execute(array($id));
     }
-
-
 
 }

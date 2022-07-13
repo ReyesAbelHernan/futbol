@@ -14,6 +14,7 @@
 
         <input type="submit" value="Enter">
         <a href="register">You dont acount?</a>
+        
         <label>{$mensaje}</label>
     </form>
 

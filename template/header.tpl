@@ -29,7 +29,10 @@
 
         <div class="text-end">
            {if isset($username) && $username} 
-            <button type="button" class="btn btn-outline-light me-2"><a href="listUsers">{$username}</a></button>
+            <button type="button" class="btn btn-outline-light me-2">
+            <a href="listUsers">{$username}</a>
+            </button>
+       
             <button type="button" class="btn btn-outline-light me-2"><a href="logout">Log Out</a></button>
           {else}
             <button type="button" class="btn btn-outline-light me-2"><a href="login">Login</a></button>

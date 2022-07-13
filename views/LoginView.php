@@ -25,7 +25,6 @@ class LoginView extends View
     }
 
     public function showListUsers($users,$logged){
-        $this->getSmarty()->assign('Usuarios', "Tabla Usuarios");
         $this->getSmarty()->assign('users', $users); 
         $this->getSmarty()->assign('logged', $logged); 
         $this->getSmarty()->display('template/listUsers.tpl');
@@ -33,13 +32,13 @@ class LoginView extends View
 
     public function renderListUsers(){
 
-        header("Location: " . BASE_URL . 'listUsers');
+        header("Location: " . BASE_URL . '/listUsers');
     }
 
     public function showLogin($logged,$error=null) {
         $this->getSmarty()->assign('mensaje', $error);  
         $this->getSmarty()->assign('logged', $logged);    
-        $this->getSmarty()->assign('index', BASE_URL.'login');
+        $this->getSmarty()->assign('index', BASE_URL.'/login');
         $this->getSmarty()->display('template/login.tpl');
     }
 

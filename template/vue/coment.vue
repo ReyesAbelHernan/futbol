@@ -12,15 +12,30 @@
             <li v-for="comment in comments">
 
 
-               Comentario :  {{ comment.comments }}
-                <br> 
-                Valoracion :  {{ comment.tier }}
+                Comment :  {{ comment.comments }}
                 <br>
                
-                  
+                Tier :  {{ comment.tier }}
+                <br>
+                
+{/literal}
+
+  {if $logged eq 'admin'}
+
+{literal}
+                <span>
+                    <br>
+                    <button v-on:click="deleteComentario(comment.id)"> DELETE COMMENT </button>
+                </span>
+                <br>
+{/literal}
+
+     {/if}
+
+{literal}
+                
             </li>
         </ul>
-
 
     </section>
 {/literal}

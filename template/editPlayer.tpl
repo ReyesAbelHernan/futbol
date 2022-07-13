@@ -2,7 +2,7 @@
 
 {if isset($username) && $username}
     <div class="editPlayer">
-        <form action="updatePlayer/{$player->id}"  method="POST">
+        <form action="updatePlayer/{$player->id}"  method="POST" enctype="multipart/form-data">
             <h3>Edit Player</h3>
             <label>Name</label>
             <input type=text name="name" value="{$player->name}">
@@ -22,9 +22,12 @@
                     {/if}
                 {/foreach}
             </select>
-            
-            <br>
+            {if $logged eq 'admin'}
+            <label>Photo</label>
+            <input type="file" name="photo" id="photo">
+            {/if}
             <input type="submit" value="Send">
+            
         </form>
     </div>
 {/if}

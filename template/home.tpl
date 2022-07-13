@@ -44,6 +44,9 @@
                                             <button type="button" class="btn btn-sm btn-outline-secondary"><a href="deletePlayer/{$players->id}"> Delete </a></button>
                                             <button type="button" class="btn btn-sm btn-outline-secondary"><a href="editPlayer/{$players->id}"> Edit </a></button>
                                             <button type="button" class="btn btn-sm btn-outline-secondary"><a href="commentsPlayer/{$players->id}"> Comments </a></button>
+                                            {if $logged eq 'admin'}
+                                                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="deleteImage/{$players->id}"> Delete Image </a></button>
+                                            {/if}
                                         {/if}
                                     </div>
                                 </div>

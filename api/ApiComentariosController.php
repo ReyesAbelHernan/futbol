@@ -1,6 +1,6 @@
 <?php
 
-require_once "model/commentsModel.php";
+require_once "./model/commentsModel.php";
 require_once "ApiController.php";
 require_once "api.view.php";
 
@@ -21,8 +21,8 @@ class ApiComentariosController extends ApiController
     {
         $id = $params[':ID'];
 
-        $comentarios = $this->model->GetCommentssforPlayer($id);
-     
+        $comentarios = $this->model->GetComentarioforPlayer($id);
+   
         $this->view->response($comentarios, 200);
     }
 
@@ -30,20 +30,20 @@ class ApiComentariosController extends ApiController
     {
         $body = $this->GetData();
 
-        $comentario = $this->model->InsertComments($body->comentario, $body->valoracion, $body->id);
+        $comentario = $this->model->InsertComentario($body->comments, $body->tier, $body->id_player);
 
-        if (!empty($comentario)) // verifica si la tarea existe
-            $this->view->response($this->model->GetComments($comentario), 200);
+        if (!empty($comentario))
+            $this->view->response($this->model->GetComentarios($comentario), 200);
         else
-            $this->view->response("El comentario no se pudo agregar", 404);
+            $this->view->response("Error", 404);
     }
 
     public function deleteComentario($params = [])
     {
-        $id_comentario = $params[':ID'];
-        $comment = $this->model->GetComments($id_comentario);
+        $id = $params[':ID'];
+        $comment = $this->model->GetComentarios($id);
         if ($comment) {
-            $this->model->DeleteComments($id_comentario);
+            $this->model->DeleteComentario($id);
             $this->view->response($comment, 200);
         } else {
             $this->view->response("Error", 500);

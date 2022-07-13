@@ -4,33 +4,30 @@ let app = new Vue({
     el: '#Vue-comments',
     data: {
         comments: [] ,
-        subtitle: "Comentarios" 
+        subtitle: "COMMENTS" 
     },
     methods: {
         getComentarios: function() {
             getComentarios();
         },
-
-        deleteComentario(id){
+        deleteComentario(id) {
             fetch(`api/comentarios/${id}`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
             })
-            
-        .then(response => getComentarios())
-        .catch(error => console.log(error));
-        
-    },
-}});
+                .then(response => getComentarios())
+                .catch(error => console.log(error));
+
+        },
+    }
+});
 
 app.getComentarios();
   
 
-document.addEventListener('DOMContentLoaded', () => {
-    
-    
+document.addEventListener('DOMContentLoaded', () => {  
+
     document.querySelector('#botonComentario').addEventListener('click', e => {
-        // evita el envio del form default
         e.preventDefault();
         addComentario();
     });
@@ -43,7 +40,7 @@ function getComentarios() {
     let url = "api/comentarios/" + id;
     fetch(url)
       .then((response) => response.json())
-      .then((comentarios) => (app.comments = comentarios))
+      .then((comments) => (app.comments = comments))
       .then((console.log(app.comments)))
       .catch((error) => console.log(error));
   }
@@ -52,9 +49,9 @@ function getComentarios() {
 function addComentario() {
     if (validarComentario() == true){
         let dataC = {
-            comentario: document.querySelector('input[name="input_textoComentario"]').value,
-            valoracion: checkValoracion(),
-            id: document.getElementById("id").value
+            comments: document.querySelector('input[name="input_textoComentario"]').value,
+            tier: checkValoracion(),
+            id_player: document.getElementById("id").value
         }
 
         fetch('api/comentarios', {
@@ -63,7 +60,7 @@ function addComentario() {
             body: JSON.stringify(dataC)
         })
             .then(response => response.json())
-            .then(comentario => app.comments.push(comentario))
+            .then(comments => app.comments.push(comments))
             .then(response => getComentarios())
             .catch(error => console.log(error));
     ResetComentario();
@@ -95,8 +92,7 @@ function ResetComentario(){
         let selector = "radio"+i;
         console.log(selector);
         document.getElementById(selector).checked = false;
-        //document.querySelector(selector).checked = false;
     }
-
-
 }
+
+

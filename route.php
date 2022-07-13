@@ -30,6 +30,9 @@ switch ($urlParts[0]) {
 	case 'deletePlayer':
 		$Controller->deletePlayer($urlParts[1]);
 		break;
+	case 'deleteImage':
+		$Controller->deleteImage($urlParts[1]);
+		break;
 	case 'newTeam':
 		$Controller->newTeam();
 		break;

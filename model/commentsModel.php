@@ -9,7 +9,7 @@ class commentsModel extends Model
 {
 
 
-    function InsertComments($comments, $tier, $id_player)
+    function InsertComentario($comments, $tier, $id_player)
     {
 
         $query=$this->getDb()->prepare("INSERT INTO comments (comments, tier, id_player) VALUES (?,?,?)");
@@ -17,20 +17,20 @@ class commentsModel extends Model
         return $this->getDb()->lastInsertId();
     }
 
-    function GetCommentssforPlayer($id)
+    function GetComentarioforPlayer($id)
     {
         $query = $this->getDb()->prepare('SELECT comments,tier,id from comments WHERE id_player=?');
         $query->execute([$id]);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
-    public function GetComments($id)
+    public function GetComentarios($id)
     {
-        $query = $this->getDb()->prepare('SELECT * from comments where id=?');
+        $query = $this->getDb()->prepare("SELECT * FROM comments WHERE id=?");
         $query->execute(array($id));
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    function DeleteComments($id)
+    function DeleteComentario($id)
     {
         $query = $this->getDb()->prepare("DELETE FROM comments WHERE id=?");
         $query->execute([$id]);
