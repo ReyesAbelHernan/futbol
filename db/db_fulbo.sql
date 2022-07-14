@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-07-2022 a las 03:24:05
+-- Tiempo de generación: 14-07-2022 a las 21:04:25
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -42,11 +42,13 @@ CREATE TABLE `player` (
 --
 
 INSERT INTO `player` (`id`, `name`, `subname`, `number`, `id_team`, `nationality`, `photo`) VALUES
-(1, 'Abel Hernan', 'Reyes', 11, 12, 'Argentina', ''),
-(2, 'Kevin', 'Garces', 5, 1, 'Argentina', ''),
-(4, 'Lisandro', 'Iguacel', 7, 1, 'Argentina', ''),
-(7, 'Maria Teresa', 'Bustos', 15, 2, 'Argentina', ''),
-(16, 'asdfff', 'asdff', 0, 1, 'asdff', 'imagenes/d103729f1dcc30115a21bb963371859e.jpg');
+(29, 'Agustin', 'Rossi', 1, 21, 'Argentina', ''),
+(30, 'Agustin', 'Sandez', 3, 2, 'Argentina', ''),
+(31, 'Nicolas', 'Figal', 4, 2, 'Argentina', 'imagenes/0dbad33128501ea0d1027a71c7001646.jpg'),
+(32, 'Dario', 'Benedetto', 9, 2, 'Argentino', 'imagenes/efe7d908ce4a89c874ce3ecc1f8105d7.jpg'),
+(33, 'Franco', 'Armani', 1, 1, 'Argentina', 'imagenes/0c4fdb9303193429e4a6f102e93ae679.png'),
+(34, 'Jonatan', 'Maidana', 4, 1, 'Argentina', 'imagenes/b2a4ec80fbbc6493cf6e07cdb8d71067.png'),
+(35, 'Enzo', 'Perez', 24, 1, 'Argentina', 'imagenes/5f1a8f051e7ba794ec1f3bd4b320e555.png');
 
 -- --------------------------------------------------------
 
@@ -66,7 +68,7 @@ CREATE TABLE `team` (
 INSERT INTO `team` (`id`, `team`) VALUES
 (1, 'River'),
 (2, 'Boca'),
-(12, 'Envolventess');
+(21, 'Rasing');
 
 -- --------------------------------------------------------
 
@@ -88,10 +90,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `admin`) VALUES
 (1, 'admin', 'admin', 'admin@outlook.com', 1),
-(4, 'abel', '$2y$10$GCkNIfu2VxeNA', 'abel@abel.com', 1),
-(12, 'juan', '$2y$10$csvs4ck2jfnfH', 'juan@a.com', 0),
-(14, 'pepe', '$2y$10$6XZ7.RywtLjxJ', 'pepe@a.a', 0),
-(15, 'jorge', '$2y$10$5T03SqMwwNxzk', 'jorge@a.a', 0);
+(14, 'pepe', '$2y$10$6XZ7.RywtLjxJ', 'pepe@a.a', 1),
+(16, 'juan', '$2y$10$gzWyj2GXgtLOK', 'juan@juan.com', 0);
 
 --
 -- Índices para tablas volcadas
@@ -124,19 +124,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `player`
 --
 ALTER TABLE `player`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `team`
 --
 ALTER TABLE `team`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
